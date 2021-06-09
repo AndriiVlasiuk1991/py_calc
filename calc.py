@@ -5,11 +5,20 @@ print("\nWelcome to ", title, "\n")
 print("Інструкція:\n\t+ - додати\n\t- - відняти\n\t* - помножити\n\t/ - поділити\n\t// - поділити по модулю\n\t** - степінь числа\n\t% - залишок від ділення\n\texit - вийти з", title, "\n")
 
 
-
 while True:
-    a = int(input("Введіть перше значення: "))
+    try:
+        a = int(input("Введіть перше значення: "))
+    except ValueError:
+        print("Введіть ціле число: \n")
+        continue
+
     c = input("Введіть арифметичний оператор: ")
-    b = int(input("Введіть друге значення: "))
+
+    try:
+        b = int(input("Введіть друге значення: "))
+    except ValueError:
+        print("Введіть ціле число: \n")
+        continue
 
     if c == "+":
         print("Результат", a + b, "\n")
@@ -30,5 +39,11 @@ while True:
         print("Результат", a % b, "\n")
     else:
         print("---Ви ввели невірний арифметичний оператор!!!---\n")
+        continue
 
-    d = input(exit)
+    d = input("Для виходу з Calculator введіть exit: \n")
+    if d == "exit":
+        exit()
+    else:
+        pass
+
