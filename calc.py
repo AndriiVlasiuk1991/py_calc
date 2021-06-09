@@ -2,7 +2,7 @@
 
 title = "Calculator"
 print("\nWelcome to ", title, "\n")
-print("Інструкція:\n\t+ - додати\n\t- - відняти\n\t* - помножити\n\t/ - поділити\n\t// - поділити по модулю\n\t** - степінь числа\n\t% - залишок від ділення\n\texit - вийти з", title, "\n")
+print("Інструкція:\n\t+ - додати\n\t- - відняти\n\t* - помножити\n\t/ - поділити\n\t// - поділити по модулю\n\t** - степінь числа\n\t% - залишок від ділення", title, "\n")
 
 
 while True:
@@ -41,8 +41,8 @@ while True:
         print("---Ви ввели невірний арифметичний оператор!!!---\n")
         continue
 
-    d = input("Для виходу з Calculator введіть exit: \n")
-    if d == "exit":
+    d = input("Хочете вийти y/y ? \n")
+    if d == "y":
         exit()
     else:
         pass
