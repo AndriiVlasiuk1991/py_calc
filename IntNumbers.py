@@ -1,8 +1,8 @@
 
-b = -1
-c = 1
-while True:
 
+while True:
+    b = -1
+    c = 1
     try:
         a = int(input("\nВведіть будь яке ціле число: "))
     except ValueError:
@@ -12,9 +12,7 @@ while True:
     c += a
     print("\nПопереднє ціле число перед", a, ": ", b)
     print("\nНаступне ціле число після", a, ": ", c)
-    b = -1
-    c = 1
-    d = input("Хочете вийти y/n ? ")
+    d = input("Продовжити? Enter / n: ")
     if d == "y":
         exit()
     else:

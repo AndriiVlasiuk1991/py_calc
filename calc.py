@@ -1,49 +1,95 @@
+from math import *
+
 #title here
 
 title = "Calculator"
-print("\nWelcome to ", title, "\n")
-print("Інструкція:\n\t+ - додати\n\t- - відняти\n\t* - помножити\n\t/ - поділити\n\t// - поділити по модулю\n\t** - степінь числа\n\t% - залишок від ділення", title, "\n")
+
+def Hello():
+    print("\n---Welcome to ", title, "---\n")
+
+def help():
+    print("_" * 50)
+    print("{!s}{}".format("| Інструкція:".title().ljust(51, ), "|"))
+    print("{!s}{}".format("| \t   + - додати".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   - - відняти".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   * - помножити".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   / - поділити".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   // - поділити".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   ** - степінь числа".title().ljust(50, ), "|"))
+    print("{!s}{}".format("| \t   % - залишок від ділення".title().ljust(50, ), "|"))
+    print("_" * 50)
+#   return input()
+
+def Exit():
+    d = input("Продовжити? Enter / n: ")
+    return d
+
+def oper(x, y, z):
+    if y == "+":
+        return x + z
+    elif y == "-":
+        return x - z
+    elif y == "*":
+        return x * z
+    elif y == "**":
+        return x ** z
+    elif y == "/":
+        return x / z
+    elif y == "//":
+        return x // z
+    elif y == "%":
+        return x % z
+    elif y == "sin":
+       return sin(z)
+    elif y == "cos":
+       return cos(z)
+    elif y == "tan":
+       return tan(z)
+
+def formula():
+    return input("Введіть формулу у форматі \"a + b\": ")
 
 
-while True:
-    try:
-        a = int(input("Введіть перше значення: "))
-    except ValueError:
-        print("Введіть ціле число: \n")
-        continue
 
-    c = input("Введіть арифметичний оператор: ")
+def main():
+    Hello()
+    help()
+    while True:
 
-    try:
-        b = int(input("Введіть друге значення: "))
-    except ValueError:
-        print("Введіть ціле число: \n")
-        continue
+        try:
+            x, y, z = formula().split(" ")
+            try:
+                x = int(x)
+                z = int(z)
+            except ValueError:
+                print("---Ви ввели не число!!!--- \n ---Введіть ціле число!!!---")
+                continue
+        except ValueError:
+            print("---Ви ввели невірний формат формули!!!---")
+            continue
 
-    if c == "+":
-        print("Результат", a + b, "\n")
-    elif c == "-":
-        print("Результат", a - b, "\n")
-    elif c == "*":
-        print("Результат", a * b, "\n")
-    elif c == "/":
-        if b != 0:
-            print("Результат", a / b, "\n")
+        if (y == "+" or y == "-" or y == "*" or y == "**"):
+            res = oper(x, y, z)
+            print(f"{x} {y} {z} = {res}")
+        elif (y == "/" or y == "//" or y == "%"):
+            if z != 0:
+                res = oper(x, y, z)
+                print(f"{x} {y} {z} = {res}")
+            else: print("Не можна ділити на \"0\" \n")
+        elif y == "sin":
+            res = oper(x, y, z)
+            print(f"{y} {z} = {res}")
         else:
-            print("Не можна ділити на \"0\" \n")
-    elif c == "//":
-        print("Результат", a // b, "\n")
-    elif c == "**":
-        print("Результат", a ** b, "\n")
-    elif c == "%":
-        print("Результат", a % b, "\n")
-    else:
-        print("---Ви ввели невірний арифметичний оператор!!!---\n")
-        continue
+            print("---Ви ввели невірний арифметичний оператор!!!---\n")
+            continue
 
-    d = input("Хочете вийти y/y ? \n")
-    if d == "y":
-        exit()
-    else:
-        pass
+
+        if Exit() == "n":
+            print("\n---Кінець---")
+            break
+        else:
+            pass
+
+if __name__=="__main__":
+    main()
 
